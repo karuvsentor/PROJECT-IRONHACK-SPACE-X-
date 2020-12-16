@@ -17,6 +17,9 @@ body {
 }
 
 canvas {
+    display: block;
+    margin: auto;
+    align: center;
     border: 1px dashed white
 }
 
