@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    background-color: black;
+
+}
+
+.logo-img {
+
+}
+
+.background {
+    display: block;
+    margin: auto;
+}
+
+canvas {
+    border: 1px dashed white
+}
+
+.start-button {
+    font-size: 30px;
+    color: white;
+    background-color: black;
+    border:1px solid white;
+}
