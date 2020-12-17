@@ -5,6 +5,8 @@ class Ship {
 
         this.y = y
         this.maxY = this.ctx.canvas.height / 2 
+        this.vx = 1
+        this.vy = 1
 
         this.sprite = new Image()
         this.sprite.src = './scripts/ships/ship.png'

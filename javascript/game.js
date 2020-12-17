@@ -3,7 +3,7 @@ class Game {
         this.ctx = ctx
         this.background = new Background(ctx)
         this.interval = null
-        this.ship = new Ship(this.ctx, 400, 700)
+        this.ship = new Ship(this.ctx, 400, 700) //posicion inicio de la nave
     }
 
     start() {
@@ -32,6 +32,7 @@ class Game {
 
     move() {
         this.background.move()
+        this.ship.move()
        
     }
 
@@ -39,16 +40,16 @@ class Game {
         document.onkeydown = event => {
             switch (event.keyCode) {
                 case TOP:
-                    this.square.vy = -10
+                    this.ship.vy = -10
                     break;
                 case RIGHT:
-                    this.square.vx = 10
+                    this.ship.vx = 10
                     break;
                 case LEFT:
-                    this.square.vx = -10
+                    this.ship.vx = -10
                     break;
                 case BOTTOM:
-                    this.square.vy = 10
+                    this.ship.vy = 10
                     break;
             }
         }
@@ -57,11 +58,11 @@ class Game {
             switch (event.keyCode) {
                 case RIGHT:
                 case LEFT:
-                    this.square.vx = 0
+                    this.ship.vx = 0
                     break;
                 case BOTTOM:
                 case TOP:
-                    this.square.vy = 0
+                    this.ship.vy = 0
                     break;
             }
         }
