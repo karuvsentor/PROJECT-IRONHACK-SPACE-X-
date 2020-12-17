@@ -2,7 +2,7 @@ class Background {
     constructor(ctx) {
         this.ctx = ctx
         this.y = 0
-        this.vy = 1
+        this.vy = 5
 
         this.height = this.ctx.canvas.height
         this.width = this.ctx.canvas.width

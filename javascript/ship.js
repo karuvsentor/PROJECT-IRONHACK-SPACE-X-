@@ -5,8 +5,7 @@ class Ship {
 
         this.y = y
         this.maxY = this.ctx.canvas.height / 2 
-        this.vx = 1
-        this.vy = 1
+        
 
         this.sprite = new Image()
         this.sprite.src = './scripts/ships/ship.png'
@@ -61,5 +60,10 @@ class Ship {
       move() {
         this.x += this.vx
         this.y += this.vy
+
+        if (this.y <= this.maxY){
+            this.y = this.maxY
+            this.vy = 0
+        }
       }
     }
