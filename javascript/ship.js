@@ -1,5 +1,5 @@
 class Ship {
-  constructor(ctx, x, y,) {
+  constructor(ctx, x, y) {
     this.ctx = ctx
     this.x = x
     this.y = y
@@ -76,7 +76,7 @@ class Ship {
       this.y = this.minY
       this.vy = 0
     }
-    // limite derecho no funciona...
+    
     if (this.x >= this.maxX) {
       this.x = this.maxX
       this.vx = 0
@@ -88,26 +88,26 @@ class Ship {
 
   }
 
- /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE
-  animate() {
-    if (this.movements.left {
-        this.animateSprite()
-      } else {
-        this.resetAnimation()
-      }
+  /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE 
+   animate() {
+     if (this.movements.left {
+         this.animateSprite()
+       } else {
+         this.resetAnimation()
+       }
 
-    }
+     }
 
-    resetAnimation() {
-      this.sprite.verticalFrameIndex = 0
-      this.sprite.horizontalFrameIndex = 1
-    }
+     resetAnimation() {
+       this.sprite.verticalFrameIndex = 0
+       this.sprite.horizontalFrameIndex = 1
+     }
 
-    animateSprite() {
-      if (this.sprite.horizontalFrameIndex + 1 === this.sprite.horizontalFrames) {
-        this.sprite.horizontalFrameIndexhorizontalFrameIndex = 0
-      } else {
-        this.sprite.horizontalFrameIndex++
-      }
-    } */
-  }
+     animateSprite() {
+       if (this.sprite.horizontalFrameIndex + 1 === this.sprite.horizontalFrames) {
+         this.sprite.horizontalFrameIndexhorizontalFrameIndex = 0
+       } else {
+         this.sprite.horizontalFrameIndex++
+       }
+     } */
+}

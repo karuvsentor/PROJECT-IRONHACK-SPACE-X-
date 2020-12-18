@@ -4,6 +4,7 @@ class Game {
         this.background = new Background(ctx)
         this.interval = null
         this.ship = new Ship(this.ctx, 320, 700) //posicion inicio de la nave
+        this.enemy = new Enemy(this.ctx, 320, 50) //posicion inicio de la nave
         
     }
 
@@ -14,7 +15,7 @@ class Game {
             this.clear()
 
             this.draw()
-0.
+
             this.move()
 
         }, 1000 / 60)
@@ -28,6 +29,7 @@ class Game {
     draw() {
         this.background.draw()
         this.ship.draw()
+        this.enemy.draw()
         
     
     }
@@ -35,6 +37,8 @@ class Game {
     move() {
         this.background.move()
         this.ship.move()
+        this.enemy.move()
+        
        
     }
 
