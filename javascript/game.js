@@ -3,7 +3,8 @@ class Game {
         this.ctx = ctx
         this.background = new Background(ctx)
         this.interval = null
-        this.ship = new Ship(this.ctx, 400, 700) //posicion inicio de la nave
+        this.ship = new Ship(this.ctx, 320, 700) //posicion inicio de la nave
+        
     }
 
     start() {
@@ -27,6 +28,7 @@ class Game {
     draw() {
         this.background.draw()
         this.ship.draw()
+        
     
     }
 
