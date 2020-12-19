@@ -76,7 +76,7 @@ class Ship {
       this.y = this.minY
       this.vy = 0
     }
-    
+
     if (this.x >= this.maxX) {
       this.x = this.maxX
       this.vx = 0
@@ -87,6 +87,12 @@ class Ship {
     }
 
   }
+  collides(col) {
+    return this.x < col.x + col.width &&
+        this.x + this.w > col.x &&
+        this.y < col.y + col.height &&
+        this.y + this.x > col.y
+}
 
   /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE 
    animate() {
