@@ -43,7 +43,7 @@ class Game {
         this.enemy.move()
 
     }
-
+      // revisar video flappybird de pablo 
     drawEnemies() {
         this.enemys.forEach(enem => {
             enem.draw()
@@ -52,7 +52,7 @@ class Game {
 
     moreNewEnemies() {
         let maxW = 585
-        let minW = 0
+        let minW = 100
         let enemiesW = Math.floor(Math.random() * (maxW - minW) + minW)
         let maxX = this.ctx.canvas.width - minW
         let minX = -minW
