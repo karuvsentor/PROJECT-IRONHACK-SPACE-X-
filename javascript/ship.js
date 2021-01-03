@@ -9,7 +9,7 @@ class Ship {
     this.minX = 0
 
     this.sprite = new Image()
-    this.sprite.src = './scripts/ships/ship.png'
+    this.sprite.src = './sprites/ships/ship.png'
     this.sprite.isReady = false
 
     this.sprite.verticalFrames = 8
@@ -63,6 +63,18 @@ class Ship {
 
   }
 
+
+
+
+
+
+
+
+
+
+
+  
+
   move() {
     this.x += this.vx
     this.y += this.vy
@@ -87,12 +99,44 @@ class Ship {
     }
 
   }
-  collides(col) {
-    return this.x < col.x + col.width &&
-        this.x + this.w > col.x &&
-        this.y < col.y + col.height &&
-        this.y + this.x > col.y
-}
+  collides(enemy) {
+    return this.x < enemy.x + enemy.width &&
+      this.x + this.w > enemy.x &&
+      this.y < enemy.y + enemy.height &&
+      this.y + this.x > enemy.y
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE 
    animate() {

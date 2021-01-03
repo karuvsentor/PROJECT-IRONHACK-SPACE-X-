@@ -24,9 +24,11 @@ class Game {
 
                 this.drawEnemies()
 
+                this.checkCollitions()
+
                 this.enemiesDrawCount++
 
-                if(this.enemiesDrawCount % 200 === 0){
+                if (this.enemiesDrawCount % 55 === 0) {
                     this.moreNewEnemies()
                     this.enemiesDrawCount = 0
                 }
@@ -50,6 +52,7 @@ class Game {
         this.drawEnemies()
 
 
+
     }
 
     move() {
@@ -61,7 +64,7 @@ class Game {
         })
 
     }
-      // revisar video flappybird de pablo 
+
     drawEnemies() {
         this.enemys.forEach(enem => {
             enem.draw()

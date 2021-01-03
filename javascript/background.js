@@ -8,7 +8,7 @@ class Background {
         this.width = this.ctx.canvas.width
 
         this.img = new Image()
-        this.img.src = './scripts/backgrounds/fondo-5.png'
+        this.img.src = './sprites/backgrounds/fondo-5.png'
         this.img.isLoad = false
         this.img.onload = () => {
             this.img.isLoad = true
