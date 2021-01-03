@@ -56,6 +56,9 @@ class Game {
         this.background.move()
         this.ship.move()
         this.enemy.move()
+        this.enemys.forEach(enem => {
+            enem.move()
+        })
 
     }
       // revisar video flappybird de pablo 
