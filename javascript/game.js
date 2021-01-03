@@ -6,6 +6,9 @@ class Game {
         this.ship = new Ship(this.ctx, 320, 700) //posicion inicio de la nave
         this.enemy = new Enemy(this.ctx, 320, 50) //posicion inicio de la nave
         this.isStart = false
+
+        this.enemys = []
+        this.enemiesDrawCount = 0
     }
 
     start() {
@@ -19,6 +22,15 @@ class Game {
 
                 this.move()
 
+                this.drawEnemies()
+
+                this.enemiesDrawCount++
+
+                if(this.enemiesDrawCount % 200 === 0){
+                    this.moreNewEnemies()
+                    this.enemiesDrawCount = 0
+                }
+
             }, 1000 / 60)
             this.isStart = true
         }
@@ -26,6 +38,8 @@ class Game {
 
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+
+        this.enemys = this.enemys.filter(enem => enem.y < this.ctx.canvas.height)
     }
 
 
@@ -33,6 +47,7 @@ class Game {
         this.background.draw()
         this.ship.draw()
         this.enemy.draw()
+        this.drawEnemies()
 
 
     }
@@ -58,7 +73,7 @@ class Game {
         let minX = -minW
         let enemyPosition = Math.floor(Math.random() * (maxX - minX) + minX)
 
-        this.enemy.push(new Enemy(
+        this.enemys.push(new Enemy(
             this.ctx,
             enemyPosition,
             0,
