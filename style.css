@@ -1,22 +1,20 @@
 body {
   padding: 0;
   text-align: center;
+  background-color: blueviolet;
 
 }
 
 .game-intro {
   float: left;
-  float:inline-end;
   padding: 0% 10%;
 }
 
 .logo-img {
-  width: 400px;
+  width: 300px;
 }
 
 canvas {
-  display: block;
-  margin: auto;
   box-align: center;
 }
 

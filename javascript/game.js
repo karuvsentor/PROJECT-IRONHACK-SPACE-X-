@@ -10,11 +10,16 @@ class Game {
         this.enemys = []
         this.enemiesDrawCount = 0
         this.score = 0
+        this.sounds = {
+            theme: new Audio ('./sounds/inicio.ogg')
+        }
     }
 
     start() {
         this.setListeners()
         if (!this.isStart) {
+
+            this.sounds.theme.play()
 
             this.interval = setInterval(() => {
                 this.clear()
@@ -43,6 +48,8 @@ class Game {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
 
         this.enemys = this.enemys.filter(enem => enem.y < this.ctx.canvas.height)
+
+        this.ship.clear()
     }
 
 
@@ -145,9 +152,16 @@ class Game {
                     this.ship.vy = 10
                     break;
                     case SHOT:
-                        console.log("x")
+                        if(this.ship.canFire){
                         this.ship.shots.push(new Shot(this.ctx, this.ship.x + this.ship.width / 2 -10, this.ship.y ))  
                         console.log(this.ship)
+
+                        this.ship.canFire = false
+
+                        setTimeout(() =>{
+                            this.ship.canFire = true
+                        }, 300);
+                        }
                         break;
             }
         }

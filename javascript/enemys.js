@@ -53,10 +53,7 @@ class Enemy {
         this.height
       )
 
-      /*ESTO ESTA EN PRUEBAS
-      this.animate(  
-
-      )     */
+      
     }
 
   }

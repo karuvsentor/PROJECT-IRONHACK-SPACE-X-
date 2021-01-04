@@ -8,6 +8,7 @@ class Ship {
     this.maxX = 585
     this.minX = 0
     this.shots = []
+    this.canFire = true
     this.sprite = new Image()
     this.sprite.src = './sprites/ships/ship.png'
     this.sprite.isReady = false
@@ -36,6 +37,13 @@ class Ship {
     this.vx = 0
     this.vy = 0
   }
+
+  clear(){
+   this.shots = this.shots.filter(shots => shots.x < this.ctx.canvas.height)
+
+   
+  }
+
 
   isReady() {
     return this.sprite.isReady
