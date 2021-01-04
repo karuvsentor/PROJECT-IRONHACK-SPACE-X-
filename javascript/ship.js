@@ -7,7 +7,7 @@ class Ship {
     this.minY = 700
     this.maxX = 585
     this.minX = 0
-
+    this.shots = []
     this.sprite = new Image()
     this.sprite.src = './sprites/ships/ship.png'
     this.sprite.isReady = false
@@ -55,6 +55,8 @@ class Ship {
         this.height
       )
 
+      this.shots.forEach(shot=> shot.draw() )
+
       /*ESTO ESTA EN PRUEBAS
       this.animate(  
 
@@ -63,19 +65,8 @@ class Ship {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   move() {
+    this.shots.forEach(shot=> shot.move() )
     this.x += this.vx
     this.y += this.vy
 
@@ -97,38 +88,16 @@ class Ship {
       this.x = this.minX
       this.vx = 0
     }
-
+     
   }
+
+
   collides(enemy) {
     return this.x < enemy.x + enemy.width &&
       this.x + this.width > enemy.x &&
       this.y < enemy.y + enemy.height &&
       this.y + this.height > enemy.y
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE 

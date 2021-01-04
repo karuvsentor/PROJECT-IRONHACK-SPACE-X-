@@ -29,7 +29,7 @@ class Game {
 
                 this.enemiesDrawCount++
 
-                if (this.enemiesDrawCount % 55 === 0) {
+                if (this.enemiesDrawCount % 100 === 0) {
                     this.moreNewEnemies()
                     this.enemiesDrawCount = 0
                 }
@@ -51,8 +51,6 @@ class Game {
         this.ship.draw()
         this.enemy.draw()
         this.drawEnemies()
-        
-
 
 
     }
@@ -60,7 +58,7 @@ class Game {
     move() {
         this.background.move()
         this.ship.move()
-        this.enemy.move()
+        
         this.enemys.forEach(enem => {
             enem.move()
         })
@@ -75,7 +73,7 @@ class Game {
 
     moreNewEnemies() {
         let maxW = 585
-        let minW = 100
+        let minW = 10
         let enemiesW = Math.floor(Math.random() * (maxW - minW) + minW)
         let maxX = this.ctx.canvas.width - minW
         let minX = -minW
@@ -98,7 +96,7 @@ class Game {
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
 
         this.ctx.font = '35px Arial'
-        this.ctx.fillStyle = 'red'
+        this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
         this.ctx.fillText('Game Over!',
             this.ctx.canvas.width / 2,
@@ -116,7 +114,7 @@ class Game {
     checkCollitions() {
         if (this.enemys.some(enemy => this.ship.collides(enemy))) {
             this.stop()
-        }
+        } 
     }
 
     drawScore(){
@@ -125,7 +123,7 @@ class Game {
         this.ctx.fillStyle = 'black'
         this.ctx.textAlign = 'center'
         this.ctx.fillText(`Score: ${this.score}`,
-            this.ctx.canvas.width - 125,
+            this.ctx.canvas.width - 50,
             this.ctx.canvas.height - 50)
 
         ctx.restore()
@@ -146,6 +144,11 @@ class Game {
                 case BOTTOM:
                     this.ship.vy = 10
                     break;
+                    case SHOT:
+                        console.log("x")
+                        this.ship.shots.push(new Shot(this.ctx, this.ship.x + this.ship.width / 2 -10, this.ship.y ))  
+                        console.log(this.ship)
+                        break;
             }
         }
 

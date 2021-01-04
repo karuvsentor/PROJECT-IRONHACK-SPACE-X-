@@ -1,7 +1,7 @@
 body {
   padding: 0;
   text-align: center;
-  
+
 }
 
 .game-intro {
@@ -21,6 +21,7 @@ canvas {
 }
 
 .start-button {
+  float: left;
   font-size: 30px;
   color: white;
   background-color: black;
