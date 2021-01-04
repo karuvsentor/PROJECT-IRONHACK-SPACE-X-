@@ -73,7 +73,7 @@ class Ship {
 
 
 
-  
+
 
   move() {
     this.x += this.vx
@@ -101,17 +101,10 @@ class Ship {
   }
   collides(enemy) {
     return this.x < enemy.x + enemy.width &&
-      this.x + this.w > enemy.x &&
+      this.x + this.width > enemy.x &&
       this.y < enemy.y + enemy.height &&
-      this.y + this.x > enemy.y
+      this.y + this.height > enemy.y
   }
-
-
-
-
-
-
-
 
 
 

@@ -1,29 +1,32 @@
 body {
-    display: flex;
-    margin: 0;
-    padding:0;
-    overflow: hidden;
-    background-color: black;
-
+  padding: 0;
+  text-align: center;
 }
 
+.game-intro {
+  float: left;
+  float:inline-end;
+  padding: 0% 10%;
+}
 
-
-.background {
-    display: block;
-    margin: auto;
+.logo-img {
+  width: 400px;
 }
 
 canvas {
-    display: block;
-    margin: auto;
-    box-align: center;
-    border: 1px dashed white
+  display: block;
+  margin: auto;
+  box-align: center;
 }
 
 .start-button {
-    font-size: 30px;
-    color: white;
-    background-color: black;
-    border:1px solid white;
+  font-size: 30px;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+#game-background {
+  padding: 20px 0px;
+  margin: 0px;
 }

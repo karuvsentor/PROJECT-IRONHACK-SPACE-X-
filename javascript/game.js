@@ -50,6 +50,7 @@ class Game {
         this.ship.draw()
         this.enemy.draw()
         this.drawEnemies()
+        
 
 
 
