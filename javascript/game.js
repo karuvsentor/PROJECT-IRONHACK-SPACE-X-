@@ -9,6 +9,7 @@ class Game {
 
         this.enemys = []
         this.enemiesDrawCount = 0
+        this.score = 0
     }
 
     start() {
@@ -86,11 +87,27 @@ class Game {
             0,
             enemiesW
         ))
+        this.score++
     }
 
     stop() {
         clearInterval(this.interval)
         this.isStart = false
+        this.ctx.save()
+        this.ctx.fillStyle = 'black'
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+
+        this.ctx.font = '35px Arial'
+        this.ctx.fillStyle = 'red'
+        this.ctx.textAlign = 'center'
+        this.ctx.fillText('Game Over!',
+            this.ctx.canvas.width / 2,
+            this.ctx.canvas.height / 2 - 50)
+        this.ctx.font = '24px Arial'
+        this.ctx.fillStyle = 'white'
+        this.ctx.fillText(`Your final score: ${this.score} points`,
+            this.ctx.canvas.width / 2,
+            this.ctx.canvas.height / 2 + 50)
 
 
         this.ctx.restore()
@@ -100,6 +117,18 @@ class Game {
         if (this.enemys.some(enemy => this.ship.collides(enemy))) {
             this.stop()
         }
+    }
+
+    drawScore(){
+        ctx.save()
+        this.ctx.font = '20px Arial'
+        this.ctx.fillStyle = 'black'
+        this.ctx.textAlign = 'center'
+        this.ctx.fillText(`Score: ${this.score}`,
+            this.ctx.canvas.width - 125,
+            this.ctx.canvas.height - 50)
+
+        ctx.restore()
     }
 
     setListeners() {
