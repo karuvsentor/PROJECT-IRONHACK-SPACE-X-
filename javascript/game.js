@@ -10,16 +10,31 @@ class Game {
         this.enemys = []
         this.enemiesDrawCount = 0
         this.score = 0
+
+        const theme = new Audio('./sounds/inicio.ogg')
+        theme.volume = 0.1
+
+        const game = new Audio('./sounds/game.wav')
+        game.volume = 0.3
+
+
+
         this.sounds = {
-            theme: new Audio ('./sounds/inicio.ogg')
+            theme: theme,
+            game: game,
+            laserShot: new Audio('./sounds/laser.mp3')
         }
     }
 
     start() {
+
         this.setListeners()
+
         if (!this.isStart) {
 
-            this.sounds.theme.play()
+            // this.sounds.theme.play() sonido antes de empezar el juego ...
+
+            this.sounds.game.play()
 
             this.interval = setInterval(() => {
                 this.clear()
@@ -65,7 +80,7 @@ class Game {
     move() {
         this.background.move()
         this.ship.move()
-        
+
         this.enemys.forEach(enem => {
             enem.move()
         })
@@ -121,10 +136,10 @@ class Game {
     checkCollitions() {
         if (this.enemys.some(enemy => this.ship.collides(enemy))) {
             this.stop()
-        } 
+        }
     }
 
-    drawScore(){
+    drawScore() {//diseño letrero con puntución
         ctx.save()
         this.ctx.font = '20px Arial'
         this.ctx.fillStyle = 'black'
@@ -137,7 +152,7 @@ class Game {
     }
 
     setListeners() {
-        document.onkeydown = event => {
+        document.onkeydown = event => {//movimiento de la nave cuando se pulsa la tecla
             switch (event.keyCode) {
                 case TOP:
                     this.ship.vy = -10
@@ -151,22 +166,23 @@ class Game {
                 case BOTTOM:
                     this.ship.vy = 10
                     break;
-                    case SHOT:
-                        if(this.ship.canFire){
-                        this.ship.shots.push(new Shot(this.ctx, this.ship.x + this.ship.width / 2 -10, this.ship.y ))  
-                        console.log(this.ship)
-
+                case SHOT://disparo nave
+                    if (this.ship.canFire) {
+                        this.ship.shots.push(new Shot(this.ctx, this.ship.x + this.ship.width / 2 - 10, this.ship.y))
                         this.ship.canFire = false
 
-                        setTimeout(() =>{
+                        setTimeout(() => {
                             this.ship.canFire = true
                         }, 300);
-                        }
-                        break;
+
+                    }//sonidos disparos nave
+                    this.sounds.laserShot.currentTime = 0
+                    this.sounds.laserShot.play()
+                    break;
             }
         }
 
-        document.onkeyup = event => {
+        document.onkeyup = event => {// parar el movimiento de la nave cuando no se pulsa la tecla
             switch (event.keyCode) {
                 case RIGHT:
                 case LEFT:

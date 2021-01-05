@@ -1,7 +1,7 @@
 body {
   padding: 0;
   text-align: center;
-  background-color: blueviolet;
+  background-color: black;
 
 }
 
@@ -23,7 +23,7 @@ canvas {
   font-size: 30px;
   color: white;
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 #game-background {
