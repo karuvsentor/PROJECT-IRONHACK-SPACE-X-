@@ -9,8 +9,10 @@ window.onload = () => {
     }
 
     function startGame() {
-
-
         game.start()
     }
+    document.getElementById('reset-button').onclick = () => {
+        startGame();
+    }
+
 }

@@ -25,6 +25,13 @@ canvas {
   background-color: black;
   border: 1px solid black;
 }
+.reset-button {
+  float: left;
+  font-size: 30px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}
 
 #game-background {
   padding: 20px 0px;
