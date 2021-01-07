@@ -14,7 +14,7 @@ class Enemy {
     this.sprite.horizontalFrames = 4
 
     this.sprite.verticalFrameIndex = 1
-    this.sprite.horizontalFrameIndex = 1
+    this.sprite.horizontalFrameIndex = 
 
     this.width = 0
     this.height = 0
@@ -75,4 +75,4 @@ class Enemy {
   }
 }
 
-const Speed = 7
+const Speed = 2

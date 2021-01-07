@@ -5,6 +5,7 @@ class Game {
         this.interval = null
         this.ship = new Ship(this.ctx, 320, 700) //posicion inicio de la nave
         this.enemy = new Enemy(this.ctx, 320, 50) //posicion inicio de la nave
+        this.boss = new Boss(this.ctx, 320, 50)
         this.isStart = false
         this.shot = []
         this.enemys = []
@@ -34,12 +35,17 @@ class Game {
                 this.enemiesDrawCount++
                 if (this.enemiesDrawCount % 50 === 0) {
                     this.moreNewEnemies()
-                    this.enemiesDrawCount = 0
+                    this.enemiesDrawCount = 1
                 }
             }, 1000 / 60)
             this.isStart = true
-        }
+        }   
     }
+
+    reset() {
+        this.start()
+    }
+
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
         this.enemys = this.enemys.filter(enem => enem.y < this.ctx.canvas.height)
@@ -50,6 +56,7 @@ class Game {
         this.ship.draw()
         this.enemy.draw()
         this.drawEnemies()
+        this.boss.draw()
     }
     move() {
         this.background.move()
@@ -106,7 +113,10 @@ class Game {
             const shotToRemove = this.ship.shots.find(shot => shot.collides(enemy))
             if (shotToRemove) {
                 this.ship.shots = this.ship.shots.filter(shot => shot != shotToRemove)
-                this.enemys = this.enemys.filter(en => en != enemy)
+                this.enemy.sprite.src = './sprites/enemies/Explosión.png'
+                this.enemys = this.enemys.filter(en => en != enemy) 
+                    
+                
             }
          })
     }
@@ -124,16 +134,16 @@ class Game {
         document.onkeydown = event => {//movimiento de la nave cuando se pulsa la tecla
             switch (event.keyCode) {
                 case TOP:
-                    this.ship.vy = -10
+                    this.ship.vy = -5
                     break;
                 case RIGHT:
-                    this.ship.vx = 10
+                    this.ship.vx = 5
                     break;
                 case LEFT:
-                    this.ship.vx = -10
+                    this.ship.vx = -5
                     break;
                 case BOTTOM:
-                    this.ship.vy = 10
+                    this.ship.vy = 5
                     break;
                 case SHOT://disparo nave
                     if (this.ship.canFire) {
@@ -141,7 +151,7 @@ class Game {
                         this.ship.canFire = false
                         setTimeout(() => {
                             this.ship.canFire = true
-                        }, 500);
+                        }, 400);
                     }//sonidos disparos nave
                     this.sounds.laserShot.currentTime = 0
                     this.sounds.laserShot.play()

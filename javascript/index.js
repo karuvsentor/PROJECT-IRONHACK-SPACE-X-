@@ -12,7 +12,11 @@ window.onload = () => {
         game.start()
     }
     document.getElementById('reset-button').onclick = () => {
-        startGame();
+        resetGame();
+    }
+
+    function resetGame () {
+        game.reset()
     }
 
 }
