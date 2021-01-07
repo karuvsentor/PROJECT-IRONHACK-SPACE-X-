@@ -65,10 +65,7 @@ class Ship {
 
       this.shots.forEach(shot=> shot.draw() )
 
-      /*ESTO ESTA EN PRUEBAS
-      this.animate(  
-
-      )     */
+     
     }
 
   }
@@ -108,26 +105,5 @@ class Ship {
   }
 
 
-  /* NO FUNCIONA REVISAR, POSIBLE CAMBIO DE CONCEPTO DE CODIGO PARA EL MOVIMIENTO DE LA NAVE 
-   animate() {
-     if (this.movements.left {
-         this.animateSprite()
-       } else {
-         this.resetAnimation()
-       }
-
-     }
-
-     resetAnimation() {
-       this.sprite.verticalFrameIndex = 0
-       this.sprite.horizontalFrameIndex = 1
-     }
-
-     animateSprite() {
-       if (this.sprite.horizontalFrameIndex + 1 === this.sprite.horizontalFrames) {
-         this.sprite.horizontalFrameIndexhorizontalFrameIndex = 0
-       } else {
-         this.sprite.horizontalFrameIndex++
-       }
-     } */
+  
 }

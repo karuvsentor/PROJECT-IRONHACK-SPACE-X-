@@ -6,7 +6,7 @@ class Game {
         this.ship = new Ship(this.ctx, 320, 700) //posicion inicio de la nave
         this.enemy = new Enemy(this.ctx, 320, 50) //posicion inicio de la nave
         this.isStart = false
-
+        this.shot = []
         this.enemys = []
         this.enemiesDrawCount = 0
         this.score = 0
@@ -15,7 +15,7 @@ class Game {
         theme.volume = 0.1
 
         const game = new Audio('./sounds/game.wav')
-        game.volume = 0.3
+        game.volume = 0.2
 
 
 
@@ -49,13 +49,14 @@ class Game {
 
                 this.enemiesDrawCount++
 
-                if (this.enemiesDrawCount % 100 === 0) {
+                if (this.enemiesDrawCount % 50 === 0) {
                     this.moreNewEnemies()
                     this.enemiesDrawCount = 0
                 }
 
             }, 1000 / 60)
             this.isStart = true
+            
         }
     }
 
@@ -65,6 +66,7 @@ class Game {
         this.enemys = this.enemys.filter(enem => enem.y < this.ctx.canvas.height)
 
         this.ship.clear()
+        
     }
 
 
@@ -80,7 +82,7 @@ class Game {
     move() {
         this.background.move()
         this.ship.move()
-
+        this.enemy.move()
         this.enemys.forEach(enem => {
             enem.move()
         })
@@ -137,6 +139,10 @@ class Game {
         if (this.enemys.some(enemy => this.ship.collides(enemy))) {
             this.stop()
         }
+        
+        if (this.enemys.some(enemy => this.shot.collides(enemy))) {//no funciona collision undefined
+            this.stop()
+        }
     }
 
     drawScore() {//diseño letrero con puntución
@@ -173,7 +179,7 @@ class Game {
 
                         setTimeout(() => {
                             this.ship.canFire = true
-                        }, 300);
+                        }, 500);
 
                     }//sonidos disparos nave
                     this.sounds.laserShot.currentTime = 0

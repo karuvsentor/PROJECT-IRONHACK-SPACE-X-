@@ -7,14 +7,14 @@ class Enemy {
     this.minX = 0
 
     this.sprite = new Image()
-    this.sprite.src = './sprites/enemies/enemies4.jpeg'
+    this.sprite.src = './sprites/enemies/enemy1.png'
     this.sprite.isReady = false
 
-    this.sprite.verticalFrames = 12
-    this.sprite.horizontalFrames = 6
+    this.sprite.verticalFrames = 4
+    this.sprite.horizontalFrames = 4
 
-    this.sprite.verticalFrameIndex = 6
-    this.sprite.horizontalFrameIndex = 0
+    this.sprite.verticalFrameIndex = 1
+    this.sprite.horizontalFrameIndex = 1
 
     this.width = 0
     this.height = 0
@@ -75,4 +75,4 @@ class Enemy {
   }
 }
 
-const Speed = 3
+const Speed = 7

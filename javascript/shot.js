@@ -61,10 +61,10 @@ class Shot {
 
     collides(enemy) {
         return this.x < enemy.x + enemy.width &&
-          this.x + this.width > enemy.x &&
-          this.y < enemy.y + enemy.height &&
-          this.y + this.height > enemy.y
+        this.x + this.width > enemy.x &&
+        this.y < enemy.y + enemy.height &&
+        this.y + this.height > enemy.y
       }
 }
 
-const SpeedShot = -5
+const SpeedShot = -6
