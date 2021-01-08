@@ -8,10 +8,12 @@ class Game {
         this.isStart = false
         this.shot = []
         this.enemys = []
+        //this.fastEnemys = []
         this.life = 75 //ojo!!! 
         this.enemiesDrawCount = 0
         this.score = 0
-        this.explosionEnemies = 0
+        this.numberEnemies = 100
+        this.explosionEnemies = true
         const theme = new Audio('./sounds/inicio.ogg')
         theme.volume = 0.1
         const game = new Audio('./sounds/game.wav')
@@ -22,11 +24,13 @@ class Game {
             laserShot: new Audio('./sounds/laser.mp3')
         }
     }
+    
     start() {
         this.setListeners()
         if (!this.isStart) {
             // this.sounds.theme.play() sonido antes de empezar el juego ...
             this.sounds.game.play()
+            this.addDificulty()
             this.interval = setInterval(() => {
                 this.clear()
                 this.draw()
@@ -37,10 +41,11 @@ class Game {
                 this.enemysMaxSurviver()
                 this.scoreLifes()
                 this.checkCollitions()
+               // 
                 this.enemiesDrawCount++
-                if (this.enemiesDrawCount % 75 === 0) {
+                if (this.enemiesDrawCount % this.numberEnemies === 0) {
                     this.moreNewEnemies()
-                    this.enemiesDrawCount = 1
+                    this.enemiesDrawCount = 0
                 }
             }, 1000 / 60)
             this.isStart = true
@@ -54,6 +59,7 @@ class Game {
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
         this.enemys = this.enemys.filter(enem => enem.y < this.ctx.canvas.height)
+        //this.fastEnemys = this.fastEnemys.filter(enem => enem.y < this.ctx.canvas.height)
         this.ship.clear()
     }
     draw() {
@@ -66,17 +72,23 @@ class Game {
     move() {
         this.background.move()
         this.ship.move()
-
         this.enemys.forEach(enem => {
             enem.move()
         })
+        //this.fastEnemys.forEach(enem => {
+           // enem.move()
+        //})
     }
 
     drawEnemies() {
         this.enemys.forEach(enem => {
             enem.draw()
         });
+       // this.fastEnemys.forEach(enem => {
+           // enem.draw()
+       // });
     }
+    
 
     moreNewEnemies() {//metodo para que salgan mas enemigos
         let maxW = 585
@@ -91,7 +103,13 @@ class Game {
             0,
             enemiesW
         ))
-        this.score++
+        //this.fastEnemys.push(new Enemy(
+            //this.ctx,
+            //enemyPosition,
+            //0,
+            //enemiesW
+        //))
+        
     }
     stop() {//cuando termina el juego 
         clearInterval(this.interval)
@@ -107,7 +125,7 @@ class Game {
             this.ctx.canvas.height / 2 - 50)
         this.ctx.font = '24px Arial'
         this.ctx.fillStyle = 'white'
-        this.ctx.fillText(`Puntuación: ${this.score} puntos`,
+        this.ctx.fillText(`Puntuación: ${this.score*10} puntos`,
             this.ctx.canvas.width / 2,
             this.ctx.canvas.height / 2 + 50)
         this.ctx.restore()
@@ -118,6 +136,11 @@ class Game {
             return enemy.y >= this.ctx.canvas.height - enemy.height
         })) { this.life--}
 
+        //if (this.fastEnemys.some(enemy => {
+           // this.ctx.canvas.height - enemy.height
+             // return enemy.y >= this.ctx.canvas.height - enemy.height
+          //})) { this.life--}
+
     }
 
     enemysMaxSurviver(){// Si el contador de vida está a cero, se acaba el juego.
@@ -126,28 +149,49 @@ class Game {
         }
     }
 
+
+    addDificulty(){//aumentar el numero de naves cada x tiempo, PROBANDO 
+
+        setInterval(function(){ 
+            
+            this.numberEnemies += 10 } ,1500 )
+       }
+
     checkCollitions() {//colisiones Enemy con ship
         if (this.enemys.some(enemy => this.ship.collides(enemy))) {
             this.stop()
         }
+        //if (this.fastEnemys.some(enemy => this.ship.collides(enemy))) {
+          //  this.stop()
+        //}
+
         this.enemys.forEach(enemy => {// colisiones Enemy con shots
             const shotToRemove = this.ship.shots.find(shot => shot.collides(enemy))
             if (shotToRemove) {
                 this.ship.shots = this.ship.shots.filter(shot => shot != shotToRemove)
                 this.explosionEnemies
                 this.enemys = this.enemys.filter(en => en != enemy)
-
-
+                this.score++
             }
         })
+
+        //this.fastEnemys.forEach(enemy => {// colisiones Enemy con shots
+           // const shotToRemove = this.ship.shots.find(shot => shot.collides(enemy))
+            //if (shotToRemove) {
+               // this.ship.shots = this.ship.shots.filter(shot => shot != shotToRemove)
+                //this.explosionEnemies
+                //this.fastEnemys = this.fastEnemys.filter(en => en != enemy)
+                //this.score++
+           // }
+        //})
     }
     drawScore() {//diseño letrero con puntuación
         ctx.save()
         this.ctx.font = '20px Arial'
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
-        this.ctx.fillText(`Score: ${this.score}`,
-            this.ctx.canvas.width - 50,
+        this.ctx.fillText(`Score: ${this.score*10}`,
+            this.ctx.canvas.width - 60,
             this.ctx.canvas.height - 50)
         ctx.restore()
     }
@@ -157,8 +201,8 @@ class Game {
         this.ctx.font = '20px Arial'
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
-        this.ctx.fillText(`Life: ${this.life}`,
-            this.ctx.canvas.width - 50,
+        this.ctx.fillText(`Life: ${this.life/25}`,
+            this.ctx.canvas.width - 60,
             this.ctx.canvas.height - 70)
         ctx.restore()
     }
@@ -204,4 +248,6 @@ class Game {
             }
         }
     }
+
+    
 }

@@ -5,14 +5,11 @@ class Enemy {
     this.y = y
     this.maxX = 585
     this.minX = 0
-
     this.sprite = new Image()
     this.sprite.src = './sprites/enemies/enemy1.png'
     this.sprite.isReady = false
-
     this.sprite.verticalFrames = 4
     this.sprite.horizontalFrames = 4
-
     this.sprite.verticalFrameIndex = 1
     this.sprite.horizontalFrameIndex = 
 
@@ -32,7 +29,7 @@ class Enemy {
 
 
     this.vx = 0
-    this.vy = Speed
+    this.vy = Speed 
   }
 
   isReady() {
@@ -73,6 +70,8 @@ class Enemy {
     }
 
   }
+
+
 }
 
-const Speed = 2
+let Speed = 2
