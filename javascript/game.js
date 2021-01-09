@@ -9,10 +9,10 @@ class Game {
         this.shot = []
         this.enemys = []
         //this.fastEnemys = []
-        this.life = 75 //ojo!!! 
+        this.life = 51 //ojo!!! 
         this.enemiesDrawCount = 0
         this.score = 0
-        this.numberEnemies = 100
+        this.numberEnemies = 50
         this.explosionEnemies = true
         const theme = new Audio('./sounds/inicio.ogg')
         theme.volume = 0.1
@@ -201,7 +201,7 @@ class Game {
         this.ctx.font = '20px Arial'
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
-        this.ctx.fillText(`Life: ${this.life/25}`,
+        this.ctx.fillText(`Life: ${this.life/17}`,
             this.ctx.canvas.width - 60,
             this.ctx.canvas.height - 70)
         ctx.restore()

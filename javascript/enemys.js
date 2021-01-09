@@ -74,4 +74,4 @@ class Enemy {
 
 }
 
-let Speed = 2
+let Speed = 3
